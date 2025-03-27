@@ -1,5 +1,5 @@
 import React from 'react';
-import img from '../images/Web-developer.svg';
+import img from '../images/service4.png';
 import { Link } from 'react-router-dom';
 
 const Intro = () => {
@@ -13,9 +13,10 @@ const Intro = () => {
                         </div>
                         <div className="flex-col my-4 text-center lg:text-left lg:my-0 lg:justify-end w-full lg:w-1/2 px-8" data-aos="zoom-in" data-aos-delay="500">
                             
-                            <h3 className="text-3xl  text-[#1c1e2d]-900 font-bold">At Anvi Robotics, we are driven by a vision to redefine industries and transform lives through cutting-edge robotics and AI technology.</h3>
+                            <h3 className="text-3xl  text-[#1c1e2d]-900 font-bold">Revolutionizing Robotics for the Next Generation
+                            </h3>
                             <div>
-                                <p className='my-3 text-xl text-[#282f45]-600 font-semibold'>As a global player in automation and intelligent systems, we specialize in designing innovative solutions that address real-world challenges across a range of domains, including manufacturing, surveillance, and healthcare.</p>
+                                <p className='my-3 text-xl text-[#282f45]-600 font-semibold'>Welcome to the ultimate robotics innovation hub, where ideas turn into reality. Whether you're a hobbyist, a researcher, or an industry expert, our platform provides everything you need to design, simulate, code, and control robots effortlessly</p>
                             </div>
                 
                             <Link to="/contact" className="text-white bg-[#1c1e2d] hover:bg-[#282f45] inline-flex items-center justify-center w-full px-6 py-2 my-4 text-lg shadow-xl rounded-2xl sm:w-auto sm:mb-0 group transition-all duration-300">

@@ -43,7 +43,7 @@ const NavLinks = () => {
                 justify-center w-auto px-6 py-3 shadow-xl rounded-xl transition-all duration-500" 
                 smooth to="/login"
             >
-                Login
+                Sign Up
             </HashLink>
         </>
     );
