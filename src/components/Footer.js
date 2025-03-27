@@ -13,9 +13,9 @@ const Footer = () => {
 
                     {/* 1st block */}
                     <div className="col-span-12 lg:col-span-4">
-                        <div className="box-border border-b-4 border-blue-900 p-8 bg-gray-200 text-gray-600 text-center rounded-lg xl:w-80 mx-auto">
+                        <div className="box-border border-b-4 border-[black]-900 p-8 bg-gray-200 text-gray-600 text-center rounded-lg xl:w-80 mx-auto">
                             <h3 className="font-bold text-4xl mb-4">Anvi</h3>
-                            <div className='text-md font-medium text-gray-600'>
+                            <div className='text-md font-medium text-white-600'>
                                 <h5>Profound Builders,</h5>
                                 <p>Kondapur,</p>
                                 <p>Hyderabad</p>
@@ -26,44 +26,41 @@ const Footer = () => {
 
                     {/* 2nd block */}
                     <div className="col-span-6 md:col-span-6 lg:col-span-1 ml-7 mx-auto">
-                        <h6 className="text-[#013289] text-xl font-bold mb-4">LINKS</h6>
+                        <h6 className="text-[white] text-xl font-bold mb-4">LINKS</h6>
                         <ul className="text-md">
                         <li className="mb-2">
-                            <HashLink to="#" className="text-[#013289] hover:text-gray-900 hover:tracking-wider transition duration-250 ease-in-out">About</HashLink>
+                            <HashLink to="#" className="text-[white] hover:text-gray-900 hover:tracking-wider transition duration-250 ease-in-out">Home</HashLink>
                         </li>
                         <li className="mb-2">
-                            <HashLink to="#" className="text-[#013289] hover:text-gray-900 hover:tracking-wider transition duration-250 ease-in-out">Services</HashLink>
+                            <HashLink to="#" className="text-[white] hover:text-gray-900 hover:tracking-wider transition duration-250 ease-in-out">About</HashLink>
                         </li>
                         <li className="mb-2">
-                            <HashLink to="#" className="text-[#013289] hover:text-gray-900 hover:tracking-wider transition duration-250 ease-in-out">Products</HashLink>
-                        </li>
-                        <li className="mb-2">
-                            <HashLink to="#" className="text-[#013289] hover:text-gray-900 hover:tracking-wider transition duration-250 ease-in-out">Contact</HashLink>
+                            <HashLink to="#" className="text-[white] hover:text-gray-900 hover:tracking-wider transition duration-250 ease-in-out">Contact</HashLink>
                         </li>                            
                         </ul>
                     </div>
 
                     {/* 3rd block */}
                     <div className="col-span-6 md:col-span-6 lg:col-span-4 mx-auto">
-                        <h6 className="text-[#013289] text-xl font-bold mb-4">OUR Products</h6>
+                        <h6 className="text-[white] text-xl font-bold mb-4">OUR Products</h6>
                         <ul className="text-md">
                         <li className="mb-2">
-                            <HashLink smooth to="/#portfolio" className="text-[#013289] hover:text-gray-900 hover:tracking-wider transition duration-250 ease-in-out">Semi Humanoid Robot</HashLink>
+                            <HashLink smooth to="/#portfolio" className="text-[white] hover:text-gray-900 hover:tracking-wider transition duration-250 ease-in-out">Semi Humanoid Robot</HashLink>
                         </li>
                         <li className="mb-2">
-                            <HashLink smooth to="/#portfolio" className="text-[#013289] hover:text-gray-900 hover:tracking-wider transition duration-250 ease-in-out">Humanoid Robot</HashLink>
+                            <HashLink smooth to="/#portfolio" className="text-[white] hover:text-gray-900 hover:tracking-wider transition duration-250 ease-in-out">Humanoid Robot</HashLink>
                         </li>
                         <li className="mb-2">
-                            <HashLink smooth to="/#portfolio" className="text-[#013289] hover:text-gray-900 hover:tracking-wider transition duration-250 ease-in-out">Survillience Robot</HashLink>
+                            <HashLink smooth to="/#portfolio" className="text-[white] hover:text-gray-900 hover:tracking-wider transition duration-250 ease-in-out">Survillience Robot</HashLink>
                         </li>
                         <li className="mb-2">
-                            <HashLink smooth to="/#portfolio" className="text-[#013289] hover:text-gray-900 hover:tracking-wider transition duration-250 ease-in-out">Interactive Robot</HashLink>
+                            <HashLink smooth to="/#portfolio" className="text-[white] hover:text-gray-900 hover:tracking-wider transition duration-250 ease-in-out">Interactive Robot</HashLink>
                         </li>
                         </ul>
                     </div>
 
                     {/* 4th block */}
-                    <div className="col-span-12 text-center mx-auto lg:col-span-3 font-bold uppercase text-blue-900">
+                    <div className="col-span-12 text-center mx-auto lg:col-span-3 font-bold uppercase text-white-900">
                         <div className="text-xl mb-6">
                             Social Media Links.
                         </div>
