@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { useContext } from "react";
 import AOS from 'aos';
 import "aos/dist/aos.css";
 import './index.css';
@@ -35,7 +34,7 @@ function App() {
     });
   }, []);
 
-  useDocTitle("Anvi | Dashboard");
+  useDocTitle("Vanika.ai");
 
   return (
     <>

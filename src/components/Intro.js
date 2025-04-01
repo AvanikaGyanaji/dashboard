@@ -1,45 +1,46 @@
 import React from 'react';
-import img from '../images/service4.png';
-import { Link } from 'react-router-dom';
+import img from '../images/intro2.jpg';
 
 const Intro = () => {
     return (
         <>
-                <div className="m-auto max-w-6xl p-2 md:p-12 h-5/6" id='about' >
+            <div className="m-auto max-w-6xl p-2 md:p-12 h-5/6" id='about'>
+                {/* Heading */}
+                <h3 className="text-4xl text-[#1c1e2d] font-sans font-bold text-center mb-4">
+                    Revolutionizing Robotics for the Next Generation
+                </h3>
 
-                    <div className="flex flex-col-reverse lg:flex-row py-8 justify-between lg:text-left" data-aos="fade-up">
-                        <div className="lg:w-1/2 flex flex-col lg:mx-4 justify-center">
-                            <img alt="card img" className="rounded-t float-right" src={img} />
-                        </div>
-                        <div className="flex-col my-4 text-center lg:text-left lg:my-0 lg:justify-end w-full lg:w-1/2 px-8" data-aos="zoom-in" data-aos-delay="500">
-                            
-                            <h3 className="text-3xl  text-[#1c1e2d]-900 font-bold">Revolutionizing Robotics for the Next Generation
-                            </h3>
-                            <div>
-                                <p className='my-3 text-xl text-[#282f45]-600 font-semibold'>Welcome to the ultimate robotics innovation hub, where ideas turn into reality. Whether you're a hobbyist, a researcher, or an industry expert, our platform provides everything you need to design, simulate, code, and control robots effortlessly</p>
-                            </div>
-                
-                            <Link to="/contact" className="text-white bg-[#1c1e2d] hover:bg-[#282f45] inline-flex items-center justify-center w-full px-6 py-2 my-4 text-lg shadow-xl rounded-2xl sm:w-auto sm:mb-0 group transition-all duration-300">
-                                Contact us
-                                <svg 
-                                    className="w-4 h-4 ml-1 group-hover:translate-x-2 transition-all duration-300" 
-                                    xmlns="http://www.w3.org/2000/svg" 
-                                    viewBox="0 0 20 20" 
-                                    fill="currentColor"
-                                >
-                                    <path 
-                                    fillRule="evenodd" 
-                                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" 
-                                    clipRule="evenodd"
-                                    />
-                                </svg>
-                            </Link>
+                <div className="flex flex-col lg:flex-row py-8 items-center lg:items-start justify-between lg:text-left" data-aos="fade-up">
+                    {/* Left Image */}
+                    <div className="lg:w-1/2 flex flex-col lg:mx-4 justify-center">
+                        <img alt="card img" className="rounded-lg w-full lg:w-4/5" src={img} />
+                    </div>
 
+                    {/* Right Content */}
+                    <div className="w-full lg:w-1/2 px-6 ml-[-10px]" data-aos="zoom-in" data-aos-delay="500">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            {[  
+                                { title: "VIRTUAL", desc: "Simulated environments, robot design in software." },
+                                { title: "AUTONOMOUS", desc: "Self-thinking, decision-making robotics." },
+                                { title: "NEURO-INTEGRATED", desc: "AI/ML-inspired control and processing." },
+                                { title: "INTELLIGENT", desc: "Smart learning, adaptive systems." },
+                                { title: "KINETICS", desc: "Mechanical movement, dynamics." },
+                                { title: "ACTUATION", desc: "Motor control, servo systems, real-world robotics output." }
+                            ].map((item, index) => (
+                                <div key={index} className="bg-[#282f45] border border-gray-500 p-5 rounded-lg w-[100%]">
+                                    <h5 className="text-xl text-white font-sans font-bold">
+                                        <span className="text-2xl uppercase">{item.title.charAt(0)}</span>
+                                        {item.title.slice(1).toLowerCase()}
+                                    </h5>
+                                    <p className="text-white">{item.desc}</p>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </div>
+            </div>
         </>
-    )
-}
+    );
+};
 
 export default Intro;

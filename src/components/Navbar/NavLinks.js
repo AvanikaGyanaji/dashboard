@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { HashLink } from 'react-router-hash-link';
 
 const NavLinks = () => {
-    const [scrolled, setScrolled] = useState(false);
-
     useEffect(() => {
         const handleScroll = () => {
-            setScrolled(window.scrollY > 10); // Change effect after scrolling
+            // Handle scroll logic here
         };
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
@@ -41,7 +39,7 @@ const NavLinks = () => {
             <HashLink 
                 className="text-white bg-[rgb(28,30,45)] hover:bg-[rgb(40,47,69)] inline-flex items-center 
                 justify-center w-auto px-6 py-3 shadow-xl rounded-xl transition-all duration-500" 
-                smooth to="/login"
+                smooth to="/"
             >
                 Sign Up
             </HashLink>

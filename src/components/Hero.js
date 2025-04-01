@@ -25,17 +25,17 @@ const Hero = () => {
 >
     <div className="max-w-2xl flex flex-col items-center">
         <h4 className="mb-5 md:text-5xl text-3xl font-bold text-[#1c1e2d]">
-            The Future of Robotics Begins Here
+            Robotics Launchpad Fueled By Imagination
         </h4>
         <div className="text-xl font-semibold tracking-tight mb-5 text-[#282f45]">
-            We don't just imagine the future - We build it.
+            You don't just imagine  - You build it here.
         </div>
         <div className="mb-4">
-            <Link to="/login" 
+            <Link to="/" 
                 className="text-white bg-[#1c1e2d] border border-[#1c1e2d] hover:bg-[#282f45] hover:border-[#282f45] hover:text-white 
                 inline-flex items-center justify-center w-full px-6 py-3 my-4 text-lg 
                 shadow-xl rounded-2xl sm:w-auto sm:mb-0 transition-all duration-300">
-                Sign in
+                Launching Soon
                 <svg className="w-4 h-4 ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd"></path>
                 </svg>

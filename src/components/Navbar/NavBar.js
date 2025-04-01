@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import NavLinks from '../Navbar/NavLinks';
 import { HashLink } from 'react-router-hash-link';
-import Anvi from '../../images/img5.png';  
+import Anvi from '../../images/logo vanika.png';  
 
 const NavBar = () => {
     const [top, setTop] = useState(!window.scrollY);
