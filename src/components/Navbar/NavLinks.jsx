@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { HashLink } from 'react-router-hash-link';
 
 const NavLinks = () => {
-    const [scrolled, setScrolled] = useState(false);
-
     useEffect(() => {
         const handleScroll = () => {
-            setScrolled(window.scrollY > 10); // Change effect after scrolling
+            // Handle scroll logic here
         };
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
