@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anvi Robotics - Alerts</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .dashboard-container {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            grid-template-rows: 70px 1fr;
+            height: 100vh;
+            gap: 1px;
+            background: #0a0a15;
+        }
+
+        /* Header */
+        .header {
+            grid-column: 1 / -1;
+            background: linear-gradient(90deg, #1e3c72 0%, #2a5298 100%);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(45deg, #00d2ff, #3a7bd5);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #00ff88;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background: rgba(30, 30, 50, 0.9);
+            backdrop-filter: blur(10px);
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            background: linear-gradient(45deg, rgba(0, 210, 255, 0.2), rgba(58, 123, 213, 0.2));
+            border-color: rgba(0, 210, 255, 0.3);
+            transform: translateX(5px);
+        }
+
+        .nav-icon {
+            width: 20px;
+            height: 20px;
+            background: #00d2ff;
+            border-radius: 4px;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 2rem;
+            overflow-y: auto;
+            background: rgba(10, 10, 21, 0.5);
+        }
+
+        .alerts-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .alert-item {
+            background: rgba(255, 71, 87, 0.1);
+            border-left: 4px solid #ff4757;
+            padding: 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .alert-item:hover {
+            background: rgba(255, 71, 87, 0.2);
+            transform: translateX(5px);
+        }
+
+        .alert-details {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .alert-time {
+            font-size: 0.8rem;
+            color: #cccccc;
+        }
+
+        .alert-message {
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .alert-priority {
+            font-size: 0.8rem;
+            color: #ffa500;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .ack-btn, .clear-btn {
+            background: linear-gradient(45deg, #4a90e2, #7b68ee);
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            padding: 0.5rem 0.8rem;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .clear-btn {
+            background: linear-gradient(45deg, #ff4757, #ff3838);
+        }
+
+        .ack-btn:hover, .clear-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(74, 144, 226, 0.4);
+        }
+
+        /* Filter Bar */
+        .filter-bar {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .filter-bar select {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            color: #ffffff;
+            font-size: 0.9rem;
+            cursor: pointer;
+            appearance: none;
+        }
+
+        .filter-bar select option {
+            color: #000000;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .dashboard-container {
+                grid-template-columns: 1fr;
+                grid-template-rows: 70px auto 1fr;
+            }
+
+            .sidebar {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">
+                <div class="logo-icon">AR</div>
+                <div>
+                    <h2>ANVI ROBOTICS</h2>
+                    <p style="font-size: 0.8rem; opacity: 0.8;">Security Surveillance System</p>
+                </div>
+            </div>
+            <div class="header-controls">
+                <div class="status-indicator">
+                    <div class="status-dot"></div>
+                    <span>3 Robots Online</span>
+                </div>
+                <div class="status-indicator">
+                    <span id="current-time"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="nav-item" onclick="window.location.href='{{ url_for('dashboard') }}'">
+                <div class="nav-icon"></div>
+                <span>Dashboard</span>
+            </div>
+            <div class="nav-item" onclick="window.location.href='{{ url_for('live_feed') }}'">
+                <div class="nav-icon"></div>
+                <span>Live Feed</span>
+            </div>
+            <div class="nav-item active" onclick="window.location.href='{{ url_for('patrol_routes') }}'">
+                <div class="nav-icon"></div>
+                <span>Patrol Routes</span>
+            </div>
+            <div class="nav-item" onclick="window.location.href='{{ url_for('alerts') }}'">
+                <div class="nav-icon"></div>
+                <span>Alerts</span>
+            </div>
+            <div class="nav-item" onclick="window.location.href='{{ url_for('analytics') }}'">
+                <div class="nav-icon"></div>
+                <span>Analytics</span>
+            </div>
+            <div class="nav-item" onclick="window.location.href='{{ url_for('maintenance') }}'">
+                <div class="nav-icon"></div>
+                <span>Maintenance</span>
+            </div>
+            <div class="nav-item" onclick="window.location.href='{{ url_for('settings') }}'">
+                <div class="nav-icon"></div>
+                <span>Settings</span>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <h3 style="font-size: 1.2rem; color: #00d2ff; margin-bottom: 1rem;">🚨 Alerts Panel</h3>
+
+            <!-- Filter Bar -->
+            <div class="filter-bar">
+                <label for="priority-filter">Filter by Priority:</label>
+                <select id="priority-filter" onchange="filterAlerts()">
+                    <option value="all">All</option>
+                    <option value="high">High Priority</option>
+                    <option value="medium">Medium Priority</option>
+                    <option value="low">Low Priority</option>
+                </select>
+            </div>
+
+            <!-- Alerts List -->
+            <div class="alerts-container" id="alerts-container">
+                <div class="alert-item" data-priority="high">
+                    <div class="alert-details">
+                        <div class="alert-time">Just now</div>
+                        <div class="alert-message">Intrusion detected in Zone C - Robot-03 responding</div>
+                        <div class="alert-priority">Priority: High</div>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="ack-btn" onclick="acknowledgeAlert(this)">Acknowledge</button>
+                        <button class="clear-btn" onclick="clearAlert(this)">Clear</button>
+                    </div>
+                </div>
+
+                <div class="alert-item" data-priority="medium">
+                    <div class="alert-details">
+                        <div class="alert-time">5 minutes ago</div>
+                        <div class="alert-message">Battery low on Robot-02 - Charging initiated</div>
+                        <div class="alert-priority">Priority: Medium</div>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="ack-btn" onclick="acknowledgeAlert(this)">Acknowledge</button>
+                        <button class="clear-btn" onclick="clearAlert(this)">Clear</button>
+                    </div>
+                </div>
+
+                <div class="alert-item" data-priority="low">
+                    <div class="alert-details">
+                        <div class="alert-time">30 minutes ago</div>
+                        <div class="alert-message">Patrol completed - All zones clear</div>
+                        <div class="alert-priority">Priority: Low</div>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="ack-btn" onclick="acknowledgeAlert(this)">Acknowledge</button>
+                        <button class="clear-btn" onclick="clearAlert(this)">Clear</button>
+                    </div>
+                </div>
+
+                <!-- Additional alerts can be added here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Update current time in header
+        function updateTime() {
+            const now = new Date();
+            document.getElementById('current-time').textContent = now.toLocaleTimeString();
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+
+        // Highlight active nav item on click
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Acknowledge an alert
+        function acknowledgeAlert(btn) {
+            const alertItem = btn.closest('.alert-item');
+            alertItem.style.opacity = '0.6';
+            btn.disabled = true;
+            btn.textContent = 'Acknowledged';
+        }
+
+        // Clear an alert
+        function clearAlert(btn) {
+            const alertItem = btn.closest('.alert-item');
+            alertItem.remove();
+        }
+
+        // Filter alerts by priority
+        function filterAlerts() {
+            const filterValue = document.getElementById('priority-filter').value;
+            const alerts = document.querySelectorAll('.alert-item');
+
+            alerts.forEach((alert) => {
+                const priority = alert.getAttribute('data-priority');
+                if (filterValue === 'all' || filterValue === priority) {
+                    alert.style.display = 'flex';
+                } else {
+                    alert.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
